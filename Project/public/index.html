@@ -5,23 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Золотая корона</title>
   <link rel="stylesheet" href="css/Palax.css">
-
+<link rel="stylesheet" href="css/Scroll.css">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
  <link rel="stylesheet" href="css/main.css">
-
+ <link rel="stylesheet" href="css/animate.css">
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+ <script type="text/javascript" src="js/wow.min.js"></script>
 </head>
 <body>
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-      <!-- менюшка в моб версии -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+
         <a class="navbar-brand" href="#">Золотая корона</a>
       </div>
       <div class="navbar-collapse collapse">
@@ -29,8 +31,7 @@
           <li class="active"><a href="#page-one">Главная</a></li>
           <li><a href="#page-two">О банке</a></li>
           <li><a href="#page-three">Курсы валют</a></li>
-          <li><a href="#page-four">Контакты</a></li>
-          <li><a href="#page-five"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+          <li><a href="#page-four"><i class = "fa fa-phone">Контакты</i></a></li>
         </ul>
       </div>
     </div>
@@ -40,8 +41,10 @@
     <div class="container">
       <div class="row centered">
         <div class="col-lg-8 col-lg-offset-2">
+        	
           <h1>Золотая корона</h1>
-          
+        <img  src="http://prima.crimea.com/sites/default/files/ramka_korona.png" width="450" height="250" >
+  
         </div>
       </div>
     </div>
@@ -51,12 +54,12 @@
   <div class="bgimg-1">
    <div class="container w">
     <div class="row centered">
-    <iframe width="550" height="450" align="right"  src="">
-</iframe>
+    	<img class = "wow fadeInRight" src="http://www.globalyouth360.com/wp-content/uploads/2016/11/bank.jpg" width="550" height="450" align="right" data-wow-delay = "1s">
+  
       <div class="col-lg-4">
         <i class="fa fa-bank"></i>
         <h4>О банке</h4>
-        <p>  </p>
+        <p class="wow fadeInUp" data-wow-delay = "0s"> АО «Золотая корона» и его дочерние организации (совместно – Группа «Корона») сегодня являются активной, динамично развивающейся финансовой группой, заметным игроком на всех основных рынках финансовых услуг в Республике Казахстан. Группой многое сделано за прошедшие годы в рамках реализации Корпоративной стратегии на 2013-2015 гг. - значительно усилено финансовое положение, бизнес стал более технологичным и удобным для клиентов, создана основа для стабильного долгосрочного роста.</p>
           
       </div>
       </div>
@@ -64,50 +67,52 @@
     </div>
     </div>
   <div id = "page-three">
+ <div class="bgimg-2">
+   
+    <div class="container w">
+<script type="text/javascript">
+	var d = new Date();
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth() + 1;
+    var curr_year = d.getFullYear();
+    document.write(curr_date + "-" + curr_month + "-" +curr_year);
+</script>
 
-   <div id="dg">
-    <div class="container">
       <div class="row centered">
 
         <h4>Курс валют</h4>
         <br>
         <div class="col-lg-4">
           <div class="tilt">
-            <a  href="" class="btn circle btn-outline b-primary m-b-lg p-x-md"><img class="icon" src="img/ic_itunes.png" alt=""></a>
-         
+ 
            
           </div>
             <font size="5" color="grey" face="Arial">Доллар</font>
         </div>
         <div class="col-lg-4">
           <div class="tilt">
-            <a href="" class="btn circle btn-outline b-primary m-b-lg p-x-md"><img class="icon" src="img/unnamed.png" alt=""></a>
+            
            
           </div>
            <font size="5" color="grey" face="Arial">Евро</font>
         </div>
         <div class="col-lg-4">
           <div class="tilt">
-            <a href="видео.html" class="btn circle btn-outline b-primary m-b-lg p-x-md"><img class="icon" src="img/видео.png" alt=""></a>
-           
-            
+              
           </div>
            <font size="5" color="grey" face="Arial">Руб.</font>
         </div>
       </div>
     </div>
-    </div>
+  
   </div>
   
   <br><br>
   <div id="page-four">
-    <div class="bgimg-2">
   <div class="container wb">
     <div class="row centered">
-      <br><br>
-      <div class="col-lg-8 col-lg-offset-2">
         <h4>Свяжитесь с нами</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+        <p><i class = "fa fa-phone">+7(708)8887766</i></p>
         <p><br><br></p>
       </div>
       <div class="col-lg-2"></div>
@@ -116,9 +121,6 @@
       </div>
     </div>
   </div>
-  </div>
-  </div>
- 
   <div id="f">
     <div class="container">
       <div class="row centered">
@@ -129,5 +131,21 @@
     </div>
   </div>
 </div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('a[href*=#]').bind('click',function(e){e.preventDefault();
+      var target=$(this)
+      .attr("href");$('html, body')
+      .stop().animate({scrollTop:$(target)
+        .offset().top},500,function(){location.hash=target;});
+        return false;
+        });
+        });
+        </script>
+  <script>
+  	new WOW().init();
+  </script>>
 </body>
 </html>
