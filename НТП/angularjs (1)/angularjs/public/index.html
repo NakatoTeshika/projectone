@@ -1,0 +1,148 @@
+<html>
+<head>
+	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <!-- <script src="node_modules/angular/angular.js"></script> -->
+<!--    <script src="appModule.js"></script>
+    <script src="groupController.js"></script> -->
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/angular-route/angular-route.js"></script>
+<script src="/bower_components/angular-local-storage.js"></script>
+<script type="text/javascript">
+	var app = angular
+		.module("Example",['ngRoute', 'LocalStorageModule'])
+			.config(function($routeProvider){
+        		$routeProvider
+	            .when("/newUser", {
+	                templateUrl : "newGroup.html",
+	                controller : "createUserController"
+	            })
+                .when("/DeleteUser", {
+                    templateUrl : "newStudent.html",
+                    controller : "CreateStudentController"
+                })
+                .when("/ChangeUser", {
+                    templateUrl : "newTeacher.html",
+                    controller : "CreateTeacherController"
+                })
+                .when("/Addmoney", {
+                    templateUrl : "group.html",
+                    controller : "groupController"
+                })
+                .when("/TakeMoney",{
+                	templateUrl:"newSubject.html",
+                	controller: "CreateSubjectController"
+                })
+                 .when("/GiveMoney",{
+                	templateUrl:"newSubject.html",
+                	controller: "CreateSubjectController"
+                })
+                  .when("/ListOfUsers",{
+                	templateUrl:"newSubject.html",
+                	controller: "userController"
+                })
+                 .when("/AddTransactions",{
+                	templateUrl:"newSubject.html",
+                	controller: "CreateTransactionsController"
+                })
+                .when("/ListOfTransactions",{
+                	templateUrl:"newSubject.html",
+                	controller: "CreateTransactionsController"
+                })
+    		})
+    		.config(function (localStorageServiceProvider) {
+    			localStorageServiceProvider
+    				.setPrefix('Test')
+    				.setStorageType('sessionStorage')
+    				.setNotify(true, true)
+    		})
+    		.controller("mainController", function($scope, $location, localStorageService) {
+                $scope.userInfo;
+    			$scope.goTo = function(url) {
+    				$location.path(url);
+    			}
+                $scope.goToUser = function(url, user) {
+                    $location.path(url);
+                    $scope.userInfo = user;
+                }
+                if (localStorageService.get("message") != null) {
+                    $scope.users = localStorageService.get("message");
+                } else {
+                    $scope.users = [];
+                    localStorageService.set("message", $scope.users)
+                }
+    		})
+            .controller("createUserController", function($scope, localStorageService) {
+               
+                var users = localStorageService.get("message");
+                function UserClass(surname, name,account ,transactions)
+                {
+                    this.surname = surname;
+                    this.name = name;
+                    this.account = account;
+                    this.transactions = [];
+                }
+                $scope.CreateUser = function() {
+                    var user = new UserClass($scope.user.surname,$scope.user.name, $scope.user.account, "", []);
+                    users.push(user);
+                    localStorageService.set("message", users);
+                    //console.log(localStorageService.get("message"))
+                }
+            })
+            .controller("CreateTransactionsController", function($scope, localStorageService) {
+                var user;
+                var users = localStorageService.get("message");
+                function TransactionClass(date, balance, minus, plus, EUR, USD, RUB)
+                {
+                   this.date = date;
+                   this.balance = balance;
+                   this.minus = minus;
+                   this.plus = plus;
+                   this.EUR = EUR;
+                   this.USD = USD;
+                   this.RUB = RUB;
+
+                   this.balance = function()
+                    {
+                        return this.balance;
+                    }
+                   this.EUR = function()
+                    {
+                        return this.EUR;
+                    }
+                }
+                $scope.pickUser = function(pUser) {
+                    user = pUser;
+                    console.log(user);
+                }
+                $scope.CreateTransactions = function() {
+                    var transaction = new TransactionClass($scope.transactions.date, $scope.transactions.balance, $scope.transacions.minus, $scope.transactions.plus, $scope.transactions.EUR, $scope.transactions.USD, $scope.transactions.RUB);
+                    for (var i = 0; i < users.length; i++) {
+                        if (users[i].name == user.name) {
+                            user.transactions.push(transaction);
+                            users[i] = user;
+                            localStorageService.set("message", users);
+                            //console.log(localStorageService.get("message"))
+                        }
+                    }
+                }
+            })
+            
+
+            .controller("userController", function($scope) {
+                $scope.transactions = $scope.userInfo.users;
+            })
+</script>
+
+</head>
+<body ng-app="Example">
+	
+	<div ng-controller="mainController">
+        <!-- <button ng-click="goTo('')">Главная</button> -->
+        <div ng-click="goTo('/newUser')">Добавить пользователя</div>
+        <div ng-click="goTo('/AddTransactions')">Добавить транзакцию</div>
+		<center><div ng-repeat="user in users" ng-click="goToUser('/user', user)">{{user.surname}} {{user.name}}</div></center>
+		<div ng-view>
+		</div>
+	</div>
+</body>
+</html>

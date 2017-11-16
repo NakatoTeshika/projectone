@@ -1,0 +1,49 @@
+p.serif {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    h1.serif{
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    p {
+      font-size: 20px;
+    }
+    li{
+    	font-size: 20px;
+    }
+    .fig {
+    text-align: center; 
+    }
+    table, th, td {
+    border: 3px solid black;  
+    }
+    table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #ff8080;
+    color: white;
+}
+
+  ul.b {
+    list-style-type: circle;
+    margin: 0 auto;
+    width:450px;
+}
+  ul.serif{
+  	font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+    body{
+    	    background-image: url(file:///C:/Users/%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0/Desktop/0_d44b0_b99d161a_orig.jpg);
+            background-repeat: no-repeat;
+            background-position:left;
+            background-attachment: fixed;
+    }
