@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<script></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление пользователя</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <!-- <script src="node_modules/angular/angular.js"></script> -->
+<!--    <script src="appModule.js"></script>
+    <script src="groupController.js"></script> -->
+    
+</head>
+<center>
+	<div class="transactions">
+	<div>
+		<p class="serif">Удалить пользователя</p>
+	</div>
+	
+	
+
+	<div>
+		<p class = "serif"> Список пользователей</p>
+		<div class="div1" ng-repeat="user in users" ng-click="pickUser(user)">{{user.surname}} {{user.account}}</div>
+	</div>
+	<div>
+		<button class="btn btn-danger" ng-click="deleteUser()">Удалить</button>
+	</div>
+</div>
+</center>

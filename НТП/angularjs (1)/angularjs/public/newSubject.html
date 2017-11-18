@@ -11,7 +11,7 @@
     
 </head>
 <center>
-	<div class="transactions">
+	<div class="transaction">
 	<div>
 		<p class="serif">Добавить транзакцию</p>
 	</div>
@@ -21,14 +21,30 @@
 	</div>
 	
 	<div>
-		<div>Количество денег на счету</div>
-		<input class="input3" type="text" ng-model="transactions.balance" placeholder="Количество денег на счету">
+		<div>Снять</div>
+		<input class="input3" type="text" ng-model="transactions.minus" placeholder="Количество денег снять">
+	</div>
+	<div>
+		<div>Пополнить</div>
+		<input class="input3" type="text" ng-model="transactions.plus" placeholder="Количество денег пополнить">
+	</div>
+    <div>
+		<div>EUR</div>
+		<input class="input3" type="text" ng-model="transactions.EUR" placeholder="Количество денег пополнить">
+	</div>
+	<div>
+		<div>USD</div>
+		<input class="input3" type="text" ng-model="transactions.USD" placeholder="Количество денег пополнить">
+	</div>
+		<div>
+		<div>RUB</div>
+		<input class="input3" type="text" ng-model="transactions.RUB" placeholder="Количество денег пополнить">
 	</div>
 	<div>
 		<p class = "serif"> Список пользователей</p>
-		<div class="div1" ng-repeat="user in users" ng-click="pickUser(user)">{{user.surname}} {{user.account}}</div>
+		<div class="div2" ng-repeat="admin in admins" ng-click="pickAdmin(admin)">{{admin.name}}</div>
 	</div>
-	<div>
+    <div>
 		<button class="btn btn-success" ng-click="CreateTransactions()">Добавить</button>
 	</div>
 </div>

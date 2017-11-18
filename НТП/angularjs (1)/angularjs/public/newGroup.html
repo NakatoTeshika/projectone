@@ -5,13 +5,10 @@
     <meta charset="UTF-8">
     <title>Пользователь</title>
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
-    <!-- <script src="node_modules/angular/angular.js"></script> -->
-<!--    <script src="appModule.js"></script>
-    <script src="groupController.js"></script> -->
 </head>
 <body>
 <center>
-<div class="">
+<div class="user">
     <div>
         <p class="serif">Добавить пользователя</p>
     </div>
@@ -24,9 +21,13 @@
         <input class="" type="text" ng-model="user.name">
     </div>
     <div>
-        <div>Номер счета</div>
-        <input class="" type="text" ng-model="user.account">
+        <div>Количество денег</div>
+        <input class="" type="text" ng-model="user.balance">
     </div>
+    <div>
+		<p class = "serif"> Админ </p>
+		<div class="div1" ng-repeat="admin in admins" ng-click="pickAdmin(admin)">{{admin.name}}</div>
+	</div>
     <div>
         <button class="btn btn-success" ng-click="CreateUser()">Добавить</button>
     </div>

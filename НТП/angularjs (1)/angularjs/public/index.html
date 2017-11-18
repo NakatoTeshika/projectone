@@ -1,9 +1,59 @@
 <html>
 <head>
 	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
-    <!-- <script src="node_modules/angular/angular.js"></script> -->
-<!--    <script src="appModule.js"></script>
-    <script src="groupController.js"></script> -->
+	 <style>
+    p.serif {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    h1.serif{
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    p {
+      font-size: 20px;
+    }
+    li{
+        font-size: 20px;
+    }
+    .fig {
+    text-align: center; 
+    }
+    table, th, td {
+    border: 3px solid black;  
+    }
+    table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #ff8080;
+    color: white;
+}
+
+  ul.b {
+    list-style-type: circle;
+    margin: 0 auto;
+    width:450px;
+}
+  ul.serif{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+    body{
+            background-image: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-181149.jpg);
+            background-repeat: no-repeat;
+            background-position:left;
+            background-attachment: fixed;
+            background-size: cover;
+    }
+
+    </style>
 <script src="/bower_components/angular/angular.min.js"></script>
 <script src="/bower_components/angular-route/angular-route.js"></script>
 <script src="/bower_components/angular-local-storage.js"></script>
@@ -12,42 +62,27 @@
 		.module("Example",['ngRoute', 'LocalStorageModule'])
 			.config(function($routeProvider){
         		$routeProvider
+                .when("/newAdmin",{
+                    templateUrl: "newAdmin.html",
+                    controller: "createAdminСontroller"
+                })
+                 .when("/DeleteUser", {
+                    templateUrl : "Delete.html",
+                    controller : "createAdminController"
+                })
 	            .when("/newUser", {
 	                templateUrl : "newGroup.html",
 	                controller : "createUserController"
 	            })
-                .when("/DeleteUser", {
-                    templateUrl : "newStudent.html",
-                    controller : "CreateStudentController"
-                })
-                .when("/ChangeUser", {
-                    templateUrl : "newTeacher.html",
-                    controller : "CreateTeacherController"
-                })
-                .when("/Addmoney", {
-                    templateUrl : "group.html",
-                    controller : "groupController"
-                })
-                .when("/TakeMoney",{
-                	templateUrl:"newSubject.html",
-                	controller: "CreateSubjectController"
-                })
-                 .when("/GiveMoney",{
-                	templateUrl:"newSubject.html",
-                	controller: "CreateSubjectController"
-                })
-                  .when("/ListOfUsers",{
-                	templateUrl:"newSubject.html",
+                  .when("/ListOfUserTrans",{
+                	templateUrl:"Listofustrans.html",
                 	controller: "userController"
                 })
                  .when("/AddTransactions",{
                 	templateUrl:"newSubject.html",
                 	controller: "CreateTransactionsController"
                 })
-                .when("/ListOfTransactions",{
-                	templateUrl:"newSubject.html",
-                	controller: "CreateTransactionsController"
-                })
+             
     		})
     		.config(function (localStorageServiceProvider) {
     			localStorageServiceProvider
@@ -56,92 +91,146 @@
     				.setNotify(true, true)
     		})
     		.controller("mainController", function($scope, $location, localStorageService) {
-                $scope.userInfo;
+                $scope.adminInfo;
     			$scope.goTo = function(url) {
     				$location.path(url);
     			}
-                $scope.goToUser = function(url, user) {
+                $scope.goToAdmin = function(url, admin) {
                     $location.path(url);
-                    $scope.userInfo = user;
+                    $scope.adminInfo = admin;
                 }
                 if (localStorageService.get("message") != null) {
-                    $scope.users = localStorageService.get("message");
+                    $scope.admins = localStorageService.get("message");
                 } else {
-                    $scope.users = [];
-                    localStorageService.set("message", $scope.users)
+                    $scope.admins = [];
+                    localStorageService.set("message", $scope.admins)
                 }
-    		})
-            .controller("createUserController", function($scope, localStorageService) {
                
-                var users = localStorageService.get("message");
-                function UserClass(surname, name,account ,transactions)
+            
+    		})
+   
+            .controller("createAdminСontroller", function($scope, localStorageService){
+                var admins = localStorageService.get("message");
+                function AdminClass(name, user, transactions)
+                {
+                    this.name = name;
+                    this.user =null;
+                    this.transactions = [];
+                }
+                $scope.CreateAdmin = function(){
+                    var admin = new AdminClass($scope.admin.name,"",[]);
+                    admins.push(admin);
+                    localStorageService.set("message", admins);
+                }
+//                $scope.deleteUser = function (user) {
+//					for (var i = 0; i <  $scope.userInfo.users.length; i++) {
+//						if ( $scope.userInfo.users[i] == user) {
+//							delete  $scope.userInfo.users[i];
+//							console.log( $scope.userInfo.users);
+//							for (var i = 0; i < users.length; i++) {
+//								if (users[i].surname == $scope.userInfo.surname) {
+//									users[i] = $scope.userInfo;
+//									localStorageService.set("message", users);
+//								}
+//							}
+//				}}}
+                
+            })
+            .controller("createUserController", function($scope, localStorageService) {
+                var admin;
+                var admins = localStorageService.get("message");
+                function UserClass(surname, name,balance ,transactions)
                 {
                     this.surname = surname;
                     this.name = name;
-                    this.account = account;
-                    this.transactions = [];
+                    this.balance = balance;
+ 
+                }
+                                
+                $scope.pickAdmin = function(pAdmin) {
+                    admin = pAdmin;
+                    console.log(admin);
                 }
                 $scope.CreateUser = function() {
-                    var user = new UserClass($scope.user.surname,$scope.user.name, $scope.user.account, "", []);
-                    users.push(user);
-                    localStorageService.set("message", users);
+                    var user = new UserClass($scope.user.surname,$scope.user.name, $scope.user.balance);
+                    for (var i = 0; i < admins.length; i++) {
+                       if (admins[i].name == admin.name) {
+                            admin.user= user;
+                            admins[i] = admin;
+                            localStorageService.set("message", admins);
+                        }
+                    }
+                  
                     //console.log(localStorageService.get("message"))
                 }
             })
             .controller("CreateTransactionsController", function($scope, localStorageService) {
-                var user;
-                var users = localStorageService.get("message");
-                function TransactionClass(date, balance, minus, plus, EUR, USD, RUB)
+                var admin;
+                var admins = localStorageService.get("message");
+                
+                function TransactionClass(date, minus, plus, EUR, USD, RUB)
                 {
                    this.date = date;
-                   this.balance = balance;
                    this.minus = minus;
                    this.plus = plus;
                    this.EUR = EUR;
                    this.USD = USD;
                    this.RUB = RUB;
 
-                   this.balance = function()
-                    {
-                        return this.balance;
-                    }
                    this.EUR = function()
                     {
                         return this.EUR;
                     }
                 }
-                $scope.pickUser = function(pUser) {
-                    user = pUser;
-                    console.log(user);
+                $scope.pickAdmin = function(pAdmin) {
+                    admin = pAdmin;
+                    console.log(admin);
                 }
                 $scope.CreateTransactions = function() {
-                    var transaction = new TransactionClass($scope.transactions.date, $scope.transactions.balance, $scope.transacions.minus, $scope.transactions.plus, $scope.transactions.EUR, $scope.transactions.USD, $scope.transactions.RUB);
-                    for (var i = 0; i < users.length; i++) {
-                        if (users[i].name == user.name) {
-                            user.transactions.push(transaction);
-                            users[i] = user;
-                            localStorageService.set("message", users);
+                    var transaction = new TransactionClass($scope.transactions.date , $scope.transactions.minus, $scope.transactions.plus, $scope.transactions.EUR, $scope.transactions.USD, $scope.transactions.RUB);
+                    for (var i = 0; i < admins.length; i++) {
+                        if (admins[i].name == admin.name) {
+                            admin.transactions.push(transaction);
+                            admins[i] = admin;
+                            localStorageService.set("message", admins);
                             //console.log(localStorageService.get("message"))
                         }
                     }
                 }
+          
             })
-            
-
-            .controller("userController", function($scope) {
-                $scope.transactions = $scope.userInfo.users;
+    
+            .controller("userController", function($scope,localStorageService) {
+                $scope.transactions = $scope.adminInfo.transactions;
+                $scope.user = $scope.adminInfo.user;
+                var users = localStorageService.get("message");
             })
 </script>
 
 </head>
 <body ng-app="Example">
-	
+	<br>
 	<div ng-controller="mainController">
+     <center>  
         <!-- <button ng-click="goTo('')">Главная</button> -->
-        <div ng-click="goTo('/newUser')">Добавить пользователя</div>
-        <div ng-click="goTo('/AddTransactions')">Добавить транзакцию</div>
-		<center><div ng-repeat="user in users" ng-click="goToUser('/user', user)">{{user.surname}} {{user.name}}</div></center>
+        <button class="btn btn-link" ng-click="goTo('/newAdmin')">Добавить админа</button>
+        <button class="btn btn-link" ng-click="goTo('/newUser')">Добавить пользователя</button>
+        <button class="btn btn-link" ng-click="goTo('/DeleteUser')">Удалить пользователя</button>
+         <button class="btn btn-link" ng-click="goTo('/ChangeUser')">Изменить пользователя</button>
+          <button class="btn btn-link" ng-click="goTo('/ListOfUserTrans')">Список пользователей и транзакций</button>
+        <button class="btn btn-link" ng-click="goTo('/AddTransactions')">Добавить транзакцию</button><br><br>
+        <script type="text/javascript">
+	var d = new Date();
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth() + 1;
+    var curr_year = d.getFullYear();
+    document.write(curr_date + "-" + curr_month + "-" +curr_year);
+         </script>
+         <br>
+         </center>
+         <br>
 		<div ng-view>
+		
 		</div>
 	</div>
 </body>
