@@ -12,10 +12,16 @@
 	</div>
 	<div class="user">
 		<p class="serif">Пользователь: {{user.surname}} {{user.name}}</p>
+		<p class="serif">Баланс: {{user.balance}}</p>
 	</div>
 	<div class = "transaction">
 		<div ng-repeat="transaction in transactions">
-			<p class = "serif">Транзакция: {{transaction.date}} {{transaction.minus}} {{transaction.plus}}</p>
+            <p class = "serif">Дата транзакции: {{transaction.date}} </p>
+            <p class = "serif">Снять: {{transaction.minus}}</p>
+			 <p class = "serif">Пополнить: {{transaction.plus}}</p>
+			  <p class = "serif">USD: {{transaction.USD}}</p>
+			   <p class = "serif">EUR: {{transaction.EUR}}</p>
+			    <p class = "serif">RUB: {{transaction.RUB}}</p>
 	</div>
     </div>
     </div>

@@ -177,10 +177,7 @@ th {
                    this.USD = USD;
                    this.RUB = RUB;
 
-                   this.EUR = function()
-                    {
-                        return this.EUR;
-                    }
+              
                 }
                 $scope.pickAdmin = function(pAdmin) {
                     admin = pAdmin;
@@ -201,6 +198,7 @@ th {
             })
     
             .controller("userController", function($scope,localStorageService) {
+                
                 $scope.transactions = $scope.adminInfo.transactions;
                 $scope.user = $scope.adminInfo.user;
                 var users = localStorageService.get("message");
@@ -213,12 +211,14 @@ th {
 	<div ng-controller="mainController">
      <center>  
         <!-- <button ng-click="goTo('')">Главная</button> -->
-        <button class="btn btn-link" ng-click="goTo('/newAdmin')">Добавить админа</button>
+        <button class="btn btn-link" ng-click="goTo('/newAdmin')">Добавить аккаунт</button>
         <button class="btn btn-link" ng-click="goTo('/newUser')">Добавить пользователя</button>
         <button class="btn btn-link" ng-click="goTo('/DeleteUser')">Удалить пользователя</button>
          <button class="btn btn-link" ng-click="goTo('/ChangeUser')">Изменить пользователя</button>
-          <button class="btn btn-link" ng-click="goTo('/ListOfUserTrans')">Список пользователей и транзакций</button>
-        <button class="btn btn-link" ng-click="goTo('/AddTransactions')">Добавить транзакцию</button><br><br>
+        <button class="btn btn-link" ng-click="goTo('/AddTransactions')">Добавить транзакцию</button>
+        <p class = "serif">Список аккаунтов</p>
+        <center><div ng-repeat="admin in admins" ng-click="goToAdmin('/ListOfUserTrans', admin)">{{admin.name}}</div></center>
+        <br>
         <script type="text/javascript">
 	var d = new Date();
     var curr_date = d.getDate();
@@ -233,5 +233,6 @@ th {
 		
 		</div>
 	</div>
+
 </body>
 </html>
