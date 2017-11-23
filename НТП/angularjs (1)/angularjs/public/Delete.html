@@ -15,12 +15,11 @@
 	<div>
 		<p class="serif">Удалить пользователя</p>
 	</div>
-	
-	
+
 
 	<div>
 		<p class = "serif"> Список пользователей</p>
-		<div class="div1" ng-repeat="user in users" ng-click="pickUser(user)">{{user.surname}} {{user.account}}</div>
+		<div class="div3" ng-repeat="admin in admins" ng-click="pickAdmin(admin)">{{admin.name}}</div>
 	</div>
 	<div>
 		<button class="btn btn-danger" ng-click="deleteUser()">Удалить</button>

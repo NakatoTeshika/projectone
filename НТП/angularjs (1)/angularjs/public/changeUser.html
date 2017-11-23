@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <script></script>
 <head>
@@ -10,26 +9,26 @@
 <center>
 <div class="user">
     <div>
-        <p class="serif">Добавить пользователя</p>
+        <p class="serif">Изменить пользователя</p>
     </div>
     <div>
         <div>Фамилия</div>
-        <input class="" type="text" ng-model="user.surname">
+        <input class="" type="text" ng-model="user.surname" placeholder="Новая фамилия">
     </div>
     <div>
         <div>Имя</div>
-        <input class="" type="text" ng-model="user.name">
+        <input class="" type="text" ng-model="user.name" placeholder="Новое имя">
     </div>
     <div>
         <div>Количество денег</div>
-        <input class="" type="text" ng-model="user.balance">
+        <input class="" type="text" ng-model="user.balance" placeholder="Новое количество денег">
     </div>
     <div>
 		<p class = "serif"> Номер аккаунта </p>
 		<div class="div1" ng-repeat="admin in admins" ng-click="pickAdmin(admin)">{{admin.name}}</div>
 	</div>
     <div>
-        <button class="btn btn-success" ng-click="CreateUser()">Добавить</button>
+        <button class="btn btn-success" ng-click="ChangeUser()">Сохранить</button>
     </div>
 </div>
 </center>

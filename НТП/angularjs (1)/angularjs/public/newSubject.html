@@ -22,26 +22,26 @@
 	
 	<div>
 		<div>Снять</div>
-		<input class="input3" type="text" ng-model="transactions.minus" placeholder="Количество денег снять">
+		<input class="input3" type="text" ng-model="transactions.minus" placeholder="Количество денег - снять">
 	</div>
 	<div>
 		<div>Пополнить</div>
-		<input class="input3" type="text" ng-model="transactions.plus" placeholder="Количество денег пополнить">
+		<input class="input3" type="text" ng-model="transactions.plus" placeholder="Количество денег - пополнить">
 	</div>
     <div>
 		<div>EUR</div>
-		<input class="input3" type="text" ng-model="transactions.EUR" placeholder="Количество денег пополнить">
+		<input class="input3" type="text" ng-model="transactions.EUR" placeholder="Перевести в EUR">
 	</div>
 	<div>
 		<div>USD</div>
-		<input class="input3" type="text" ng-model="transactions.USD" placeholder="Количество денег пополнить">
+		<input class="input3" type="text" ng-model="transactions.USD" placeholder="Перевести в USD">
 	</div>
 		<div>
 		<div>RUB</div>
-		<input class="input3" type="text" ng-model="transactions.RUB" placeholder="Количество денег пополнить">
+		<input class="input3" type="text" ng-model="transactions.RUB" placeholder="Перевести в RUB">
 	</div>
 	<div>
-		<p class = "serif"> Список пользователей</p>
+		<p class = "serif"> Номер аккаунта </p>
 		<div class="div2" ng-repeat="admin in admins" ng-click="pickAdmin(admin)">{{admin.name}}</div>
 	</div>
     <div>

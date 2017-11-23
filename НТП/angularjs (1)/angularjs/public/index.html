@@ -68,12 +68,16 @@ th {
                 })
                  .when("/DeleteUser", {
                     templateUrl : "Delete.html",
-                    controller : "createAdminController"
+                    controller : "createUserController"
                 })
 	            .when("/newUser", {
 	                templateUrl : "newGroup.html",
 	                controller : "createUserController"
 	            })
+                 .when("/ChangeUser",{
+                    templateUrl: "changeUser.html",
+                    controller: "createUserController"
+                })
                   .when("/ListOfUserTrans",{
                 	templateUrl:"Listofustrans.html",
                 	controller: "userController"
@@ -122,18 +126,7 @@ th {
                     admins.push(admin);
                     localStorageService.set("message", admins);
                 }
-//                $scope.deleteUser = function (user) {
-//					for (var i = 0; i <  $scope.userInfo.users.length; i++) {
-//						if ( $scope.userInfo.users[i] == user) {
-//							delete  $scope.userInfo.users[i];
-//							console.log( $scope.userInfo.users);
-//							for (var i = 0; i < users.length; i++) {
-//								if (users[i].surname == $scope.userInfo.surname) {
-//									users[i] = $scope.userInfo;
-//									localStorageService.set("message", users);
-//								}
-//							}
-//				}}}
+         
                 
             })
             .controller("createUserController", function($scope, localStorageService) {
@@ -163,6 +156,30 @@ th {
                   
                     //console.log(localStorageService.get("message"))
                 }
+                 $scope.ChangeUser = function() {
+		         var user = new UserClass($scope.user.surname, $scope.user.name, $scope.user.balance);
+		         $scope.user = user;
+                 for (var i = 0; i < admins.length; i++) {
+                       if (admins[i].name == admin.name) {
+                            admin.user= user;
+                            admins[i] = admin;
+                            localStorageService.set("message", admins);
+                        }
+                    }
+                 }
+//                       $scope.deleteUser = function (user) {
+//					for (var i = 0; i <  $scope.adminInfo.users.length; i++) {
+//						if ( $scope.userInfo.users[i] == user) {
+//							delete  $scope.adminInfo.users[i];
+//							console.log( $scope.adminInfo.users);
+//							for (var i = 0; i < users.length; i++) {
+//								if (users[i].surname == $scope.adminInfo.surname) {
+//									users[i] = $scope.adminInfo;
+//									localStorageService.set("message", users);
+//								}
+//							}
+//				}}}
+              
             })
             .controller("CreateTransactionsController", function($scope, localStorageService) {
                 var admin;
@@ -176,7 +193,7 @@ th {
                    this.EUR = EUR;
                    this.USD = USD;
                    this.RUB = RUB;
-
+                    
               
                 }
                 $scope.pickAdmin = function(pAdmin) {
@@ -194,7 +211,8 @@ th {
                         }
                     }
                 }
-          
+                
+         
             })
     
             .controller("userController", function($scope,localStorageService) {
