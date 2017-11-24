@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<script></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Группа</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <!-- <script src="node_modules/angular/angular.js"></script> -->
+<!--    <script src="appModule.js"></script>
+    <script src="groupController.js"></script> -->
+    
+</head>
+<center>
+	<div class="transactions">
+	<div>
+		<p class="serif">Добавить транзакцию</p>
+	</div>
+	<div>
+		<div>Дата</div>
+		<input class="input3" type="text" ng-model="transactions.date" placeholder="Дата">
+	</div>
+	
+	<div>
+		<div>Количество денег на счету</div>
+		<input class="input3" type="text" ng-model="transactions.balance" placeholder="Количество денег на счету">
+	</div>
+	<div>
+		<p class = "serif"> Список пользователей</p>
+		<div class="div1" ng-repeat="user in users" ng-click="pickUser(user)">{{user.surname}} {{user.account}}</div>
+	</div>
+	<div>
+		<button class="btn btn-success" ng-click="CreateTransactions()">Добавить</button>
+	</div>
+</div>
+</center>
